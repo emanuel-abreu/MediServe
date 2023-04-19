@@ -1,4 +1,8 @@
 const Doctor = require("../../modules/doctor");
+/* const yup = require("yup");
+const validation = yup.object().shape({
+  name: yup.string("O nome deve ser uma string").required("Nome é obrigatório"),
+}); */
 
 async function createDoctor(req, res) {
   try {
@@ -11,6 +15,8 @@ async function createDoctor(req, res) {
       formation_institution: req.body.formation_institution,
       crm_registration: req.body.crm_registration,
     };
+
+    //    validation.validate(req.body);
 
     if (
       !doctor.date_of_bith ||
@@ -38,7 +44,7 @@ async function createDoctor(req, res) {
     res.status(201).json(newDoctor);
   } catch (error) {
     res
-      .status(400)
+      .status(500)
       .json({ message: "Não conseguimos processar sua solicitação" });
   }
 }
