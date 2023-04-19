@@ -51,7 +51,7 @@ const Doctor = connection.define("doctor", {
       "ORTOPEDIA",
     ]),
   },
-  system_status: {
+  status: {
     type: Sequelize.ENUM(["ATIVO", "INATIVO"]),
     defaultValue: "ATIVO",
   },
