@@ -25,10 +25,22 @@ const {
 
 const deleteDoctor = require("./src/controllers/doctors/deleteDoctor");
 
+const createNurse = require("./src/controllers/nurses/createNurse");
+
+const {
+  listNurse,
+  listAllNurses,
+} = require("./src/controllers/nurses/listNurse");
+
+const updateNurse = require("./src/controllers/nurses/updateNurse");
+
+const deleteNurse = require("./src/controllers/nurses/deleteNurse");
+
 const connection = require("./src/database/labmedicinebd");
 
 const Patient = require("./src/modules/patient");
 const Doctor = require("./src/modules/doctor");
+const Nurse = require("./src/modules/nurse");
 
 const app = express();
 
@@ -58,5 +70,15 @@ app.put("/api/doctors/:id", updateDoctor);
 app.put("/api/doctors/:id/status", updateStatusDoctor);
 
 app.delete("/api/doctors/:id", deleteDoctor);
+
+app.post("/api/nurses", createNurse);
+
+app.get("/api/nurses/:id", listNurse);
+app.get("/api/nurses", listAllNurses);
+
+// OTIMIZAR ESSE UPDATE e VALIDAR OS CAMPOS
+app.put("/api/nurses/:id", updateNurse);
+
+app.delete("/api/nurses/:id", deleteNurse);
 
 app.listen(3333, () => console.log("Servidor Online"));
