@@ -10,6 +10,23 @@ async function updateNurse(req, res) {
       });
     }
 
+    if (!req.body.date_of_bith) {
+      return res.status(400).json({
+        message:
+          "O campo 'Data de nascimento' é obrigatório e deve ser preenchido corretamente.",
+      });
+    } else if (!req.body.formation_institution) {
+      return res.status(400).json({
+        message:
+          "O campo 'Instituição de formação' é obrigatório e deve ser preenchido corretamente.",
+      });
+    } else if (!req.body.cofen_registration) {
+      return res.status(400).json({
+        message:
+          "O campo 'Registro COFEN' é obrigatório e deve ser preenchido corretamente.",
+      });
+    }
+
     registeredNurse.name = req.body.name || registeredNurse.name;
     registeredNurse.gender = req.body.gender || registeredNurse.gender;
     registeredNurse.date_of_bith =
@@ -24,7 +41,7 @@ async function updateNurse(req, res) {
     await registeredNurse.save();
     res.status(200).json(registeredNurse);
   } catch (error) {
-    res.status(400).json({
+    res.status(500).json({
       message: "Não conseguimos processar a sua solicitação",
     });
   }

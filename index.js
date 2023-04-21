@@ -5,7 +5,7 @@ const connection = require("./src/database/labmedicinebd");
 const Patient = require("./src/modules/patient");
 const Doctor = require("./src/modules/doctor");
 const Nurse = require("./src/modules/nurse");
-const Appointment = require("./src/modules/appointment");
+const Service = require("./src/modules/service");
 
 const app = express();
 

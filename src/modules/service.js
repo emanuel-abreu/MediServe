@@ -3,7 +3,7 @@ const connection = require("../database/labmedicinebd");
 const Doctor = require("../modules/doctor");
 const Patient = require("../modules/patient");
 
-const Appointment = connection.define("appointment", {
+const Service = connection.define("service", {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
@@ -29,4 +29,4 @@ const Appointment = connection.define("appointment", {
   },
 });
 
-module.exports = Appointment;
+module.exports = Service;

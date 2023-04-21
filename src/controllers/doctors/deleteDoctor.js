@@ -7,10 +7,17 @@ async function deleteDoctor(req, res) {
         id: req.params.id,
       },
     });
+    if (!req.params.id) {
+      return res
+        .status(404)
+        .json({ message: "Registro do médico inexistente" });
+    }
 
-    res.status(204).json({ message: "excluido" });
+    res.status(204).json({ message: "Excluído" });
   } catch (error) {
-    res.status(404).json({ message: "Registro de médico inexistente" });
+    res
+      .status(500)
+      .json({ message: "Não conseguimos processar sua solicitação" });
   }
 }
 

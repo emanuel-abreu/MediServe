@@ -3,7 +3,7 @@ const express = require("express");
 const createPatient = require("../controllers/patients/createPatient");
 const createDoctor = require("../controllers/doctors/createDoctor");
 const createNurse = require("../controllers/nurses/createNurse");
-const createService = require("../controllers/appointments/createService");
+const createService = require("../controllers/services/createService");
 
 const router = express.Router();
 

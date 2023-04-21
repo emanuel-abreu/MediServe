@@ -23,7 +23,6 @@ const Patient = connection.define("patient", {
   cpf: {
     type: Sequelize.STRING,
     allowNull: true,
-    unique: true,
   },
   phone: {
     type: Sequelize.STRING,

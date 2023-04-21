@@ -7,10 +7,17 @@ async function deletePatient(req, res) {
         id: req.params.id,
       },
     });
+    if (!req.params.id) {
+      return res
+        .status(404)
+        .json({ message: "Registro do paciente inexistente" });
+    }
 
-    res.status(204).json({ message: "excluido" });
+    res.status(204).json({ message: "Excluído" });
   } catch (error) {
-    res.status(404).json({ message: "Registro de paciente inexistente" });
+    res
+      .status(500)
+      .json({ message: "Não conseguimos processar sua solicitação" });
   }
 }
 
