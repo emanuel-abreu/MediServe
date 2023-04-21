@@ -1,4 +1,3 @@
-require("dotenv").config();
 const express = require("express");
 
 const connection = require("./src/database/labmedicinebd");
@@ -6,6 +5,7 @@ const connection = require("./src/database/labmedicinebd");
 const Patient = require("./src/modules/patient");
 const Doctor = require("./src/modules/doctor");
 const Nurse = require("./src/modules/nurse");
+const Appointment = require("./src/modules/appointment");
 
 const app = express();
 
@@ -21,7 +21,6 @@ app.use("/", deleteRoutes);
 
 app.use(express.json());
 
-connection.authenticate();
 connection.sync({ alter: true });
 
 app.listen(3333, () => console.log("Servidor Online"));

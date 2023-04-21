@@ -1,8 +1,4 @@
 const Doctor = require("../../modules/doctor");
-/* const yup = require("yup");
-const validation = yup.object().shape({
-  name: yup.string("O nome deve ser uma string").required("Nome é obrigatório"),
-}); */
 
 async function createDoctor(req, res) {
   try {
@@ -14,18 +10,27 @@ async function createDoctor(req, res) {
       phone: req.body.phone,
       formation_institution: req.body.formation_institution,
       crm_registration: req.body.crm_registration,
+      clinical_expertise: req.body.clinical_expertise,
     };
 
-    //    validation.validate(req.body);
-
-    if (
-      !doctor.date_of_bith ||
-      !doctor.formation_institution ||
-      !doctor.crm_registration
-    ) {
+    if (!doctor.date_of_bith) {
       return res.status(400).json({
-        message: `Data de Aniversário / 
+        message: `Data de Aniversário é obrigatório no cadastro`,
+      });
+    } else if (!doctor.formation_institution) {
+      return res.status(400).json({
+        message: `
         Instituição de graduação é obrigatório no cadastro`,
+      });
+    } else if (!doctor.crm_registration) {
+      return res.status(400).json({
+        message: `
+        Cadastro CRM/UF é obrigatório no cadastro`,
+      });
+    } else if (!doctor.clinical_expertise) {
+      return res.status(400).json({
+        message: `
+        Especialização clínica é obrigatório no cadastro`,
       });
     }
 
@@ -36,7 +41,7 @@ async function createDoctor(req, res) {
     if (registeredDoctor) {
       return res
         .status(409)
-        .json({ message: "Já existe um CPF com esse número." });
+        .json({ message: "Já existe um CPF com esse número cadastrado." });
     }
 
     const newDoctor = await Doctor.create(doctor);

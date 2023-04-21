@@ -14,9 +14,16 @@ async function createPatient(req, res) {
       agreement: req.body.agreement,
     };
 
-    if (!patient.date_of_bith || !patient.emergency_contact) {
+    // VALIDAR A DATA
+    if (!patient.date_of_bith) {
       return res.status(400).json({
-        message: `Data de Aniversário / Contato de emergência é obrigatório no cadastro`,
+        message: `Data de Aniversário é obrigatório no cadastro`,
+      });
+    }
+
+    if (!patient.emergency_contact) {
+      return res.status(400).json({
+        message: `Contato de emergência é obrigatório no cadastro`,
       });
     }
 
@@ -27,7 +34,7 @@ async function createPatient(req, res) {
     if (registeredpacient) {
       return res
         .status(409)
-        .json({ message: "Já existe um CPF com esse número." });
+        .json({ message: "Já existe um CPF com esse número cadastrado." });
     }
 
     const newPatient = await Patient.create(patient);
@@ -35,7 +42,7 @@ async function createPatient(req, res) {
     res.status(201).json(newPatient);
   } catch (error) {
     res
-      .status(400)
+      .status(500)
       .json({ message: "Não conseguimos processar sua solicitação" });
   }
 }

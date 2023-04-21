@@ -15,7 +15,7 @@ const Nurse = connection.define("nurse", {
     type: Sequelize.STRING,
     allowNull: true,
   },
-  // validar e obrigtório
+  // validar
   date_of_bith: {
     type: Sequelize.DATEONLY,
     allowNull: false,
@@ -23,6 +23,7 @@ const Nurse = connection.define("nurse", {
   cpf: {
     type: Sequelize.STRING,
     allowNull: true,
+    unique: true,
   },
   phone: {
     type: Sequelize.STRING,
@@ -37,6 +38,7 @@ const Nurse = connection.define("nurse", {
   cofen_registration: {
     type: Sequelize.STRING,
     allowNull: false,
+    unique: true,
   },
 });
 

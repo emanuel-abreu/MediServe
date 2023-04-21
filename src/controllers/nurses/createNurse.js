@@ -12,14 +12,19 @@ async function createNurse(req, res) {
       cofen_registration: req.body.cofen_registration,
     };
 
-    if (
-      !nurse.date_of_bith ||
-      !nurse.formation_institution ||
-      !nurse.cofen_registration
-    ) {
+    if (!nurse.date_of_bith) {
       return res.status(400).json({
-        message: `Data de Aniversário / 
+        message: `Data de Aniversário é obrigatório no cadastro`,
+      });
+    } else if (!nurse.formation_institution) {
+      return res.status(400).json({
+        message: `
         Instituição de graduação é obrigatório no cadastro`,
+      });
+    } else if (!nurse.cofen_registration) {
+      return res.status(400).json({
+        message: `
+        Cadastro COFEN/UF é obrigatório no cadastro`,
       });
     }
 
@@ -30,7 +35,7 @@ async function createNurse(req, res) {
     if (registeredNurse) {
       return res
         .status(409)
-        .json({ message: "Já existe um CPF com esse número." });
+        .json({ message: "Já existe um CPF com esse número cadastrado." });
     }
 
     const newNurse = await Nurse.create(nurse);
@@ -38,7 +43,7 @@ async function createNurse(req, res) {
     res.status(201).json(newNurse);
   } catch (error) {
     res
-      .status(400)
+      .status(500)
       .json({ message: "Não conseguimos processar sua solicitação" });
   }
 }
