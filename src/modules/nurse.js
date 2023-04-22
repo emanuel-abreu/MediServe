@@ -22,6 +22,7 @@ const Nurse = connection.define("nurse", {
   cpf: {
     type: Sequelize.STRING,
     allowNull: true,
+    unique: true,
   },
   phone: {
     type: Sequelize.STRING,
@@ -34,6 +35,7 @@ const Nurse = connection.define("nurse", {
   cofen_registration: {
     type: Sequelize.STRING,
     allowNull: false,
+    unique: true,
   },
 });
 

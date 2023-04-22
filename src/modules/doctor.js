@@ -22,6 +22,7 @@ const Doctor = connection.define("doctor", {
   cpf: {
     type: Sequelize.STRING,
     allowNull: true,
+    unique: true,
   },
   phone: {
     type: Sequelize.STRING,
@@ -34,6 +35,7 @@ const Doctor = connection.define("doctor", {
   crm_registration: {
     type: Sequelize.STRING,
     allowNull: false,
+    unique: true,
   },
   clinical_expertise: {
     type: Sequelize.ENUM([

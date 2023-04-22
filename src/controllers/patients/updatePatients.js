@@ -10,21 +10,6 @@ async function updatePatient(req, res) {
       });
     }
 
-    if (req.body.date_of_bith && req.body.date_of_bith === "") {
-      return res.status(400).json({
-        message:
-          "O campo 'Data de nascimento' é obrigatório e deve ser preenchido corretamente.",
-      });
-    } else if (
-      req.body.emergency_contact &&
-      req.body.emergency_contact === ""
-    ) {
-      return res.status(400).json({
-        message:
-          "O campo 'Contato de emergência' é obrigatório e deve ser preenchido corretamente.",
-      });
-    }
-
     registeredPatient.name = req.body.name || registeredPatient.name;
     registeredPatient.gender = req.body.gender || registeredPatient.gender;
     registeredPatient.date_of_bith =
@@ -40,11 +25,16 @@ async function updatePatient(req, res) {
     registeredPatient.agreement =
       req.body.agreement || registeredPatient.agreement;
 
-    // Não deixar colocar um cpf que já existe (extra)
-    if (registeredPatient.cpf) {
-      return res
-        .status(409)
-        .json({ message: "Já existe um CPF com esse número cadastrado." });
+    if (req.body.date_of_bith === "") {
+      return res.status(400).json({
+        message:
+          "O campo 'Data de nascimento' é obrigatório e deve ser preenchido corretamente.(Ex: MM/DD/AAAA)",
+      });
+    } else if (req.body.emergency_contact === "") {
+      return res.status(400).json({
+        message:
+          "O campo 'Contato de emergência' é obrigatório e deve ser preenchido corretamente.",
+      });
     }
 
     await registeredPatient.save();
