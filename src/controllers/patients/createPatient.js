@@ -16,13 +16,13 @@ async function createPatient(req, res) {
 
     if (!patient.date_of_bith) {
       return res.status(400).json({
-        message: `Data de Aniversário é obrigatório no cadastro`,
+        message: "Data de Aniversário é obrigatório no cadastro",
       });
     }
 
     if (!patient.emergency_contact) {
       return res.status(400).json({
-        message: `Contato de emergência é obrigatório no cadastro`,
+        message: "Contato de emergência é obrigatório no cadastro",
       });
     }
 
