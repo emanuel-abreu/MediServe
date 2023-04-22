@@ -14,7 +14,6 @@ async function createPatient(req, res) {
       agreement: req.body.agreement,
     };
 
-    // VALIDAR A DATA
     if (!patient.date_of_bith) {
       return res.status(400).json({
         message: `Data de Aniversário é obrigatório no cadastro`,

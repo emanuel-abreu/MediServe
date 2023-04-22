@@ -15,7 +15,6 @@ const Doctor = connection.define("doctor", {
     type: Sequelize.STRING,
     allowNull: true,
   },
-  // validar e obrigtório
   date_of_bith: {
     type: Sequelize.DATEONLY,
     allowNull: false,
@@ -28,19 +27,16 @@ const Doctor = connection.define("doctor", {
     type: Sequelize.STRING,
     allowNull: true,
   },
-  // obrigatório
   formation_institution: {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  // obrigatório
   crm_registration: {
     type: Sequelize.STRING,
     allowNull: false,
   },
   clinical_expertise: {
     type: Sequelize.ENUM([
-      // Boa prática deixar em caixa alta
       "CLINICO_GERAL",
       "ANESTESISTA",
       "DERMATOLOGIA",

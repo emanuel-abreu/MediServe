@@ -10,12 +10,15 @@ async function updatePatient(req, res) {
       });
     }
 
-    if (!req.body.date_of_bith) {
+    if (req.body.date_of_bith && req.body.date_of_bith === "") {
       return res.status(400).json({
         message:
           "O campo 'Data de nascimento' é obrigatório e deve ser preenchido corretamente.",
       });
-    } else if (!req.body.emergency_contact) {
+    } else if (
+      req.body.emergency_contact &&
+      req.body.emergency_contact === ""
+    ) {
       return res.status(400).json({
         message:
           "O campo 'Contato de emergência' é obrigatório e deve ser preenchido corretamente.",
@@ -37,10 +40,17 @@ async function updatePatient(req, res) {
     registeredPatient.agreement =
       req.body.agreement || registeredPatient.agreement;
 
+    // Não deixar colocar um cpf que já existe (extra)
+    if (registeredPatient.cpf) {
+      return res
+        .status(409)
+        .json({ message: "Já existe um CPF com esse número cadastrado." });
+    }
+
     await registeredPatient.save();
     res.status(200).json(registeredPatient);
   } catch (error) {
-    res.status(500).json({
+    return res.status(500).json({
       message: "Não conseguimos processar a sua solicitação",
     });
   }

@@ -10,22 +10,28 @@ async function updateDoctor(req, res) {
       });
     }
 
-    if (!req.body.date_of_bith) {
+    if (req.body.date_of_bith && req.body.date_of_bith === "") {
       return res.status(400).json({
         message:
           "O campo 'Data de nascimento' é obrigatório e deve ser preenchido corretamente.",
       });
-    } else if (!req.body.formation_institution) {
+    } else if (
+      req.body.formation_institution &&
+      req.body.formation_institution === ""
+    ) {
       return res.status(400).json({
         message:
           "O campo 'Instituição de formação' é obrigatório e deve ser preenchido corretamente.",
       });
-    } else if (!req.body.crm_registration) {
+    } else if (req.body.crm_registration && req.body.crm_registration === "") {
       return res.status(400).json({
         message:
           "O campo 'Registro CRM' é obrigatório e deve ser preenchido corretamente.",
       });
-    } else if (!req.body.clinical_expertise) {
+    } else if (
+      req.body.clinical_expertise &&
+      req.body.clinical_expertise === ""
+    ) {
       return res.status(400).json({
         message:
           "O campo 'Especialidade clínica' é obrigatório e deve ser preenchido corretamente.",
@@ -44,6 +50,13 @@ async function updateDoctor(req, res) {
       req.body.crm_registration || registeredDoctor.crm_registration;
     registeredDoctor.clinical_expertise =
       req.body.clinical_expertise || registeredDoctor.clinical_expertise;
+
+    // Não deixar colocar um cpf que já existe (extra)
+    if (registeredDoctor.cpf) {
+      return res
+        .status(409)
+        .json({ message: "Já existe um CPF com esse número cadastrado." });
+    }
 
     await registeredDoctor.save();
     res.status(200).json(registeredDoctor);

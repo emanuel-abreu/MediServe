@@ -2,15 +2,18 @@ const Nurse = require("../../modules/nurse");
 
 async function deleteNurse(req, res) {
   try {
+    const registeredNurse = await Nurse.findByPk(req.params.id);
+
     await Nurse.destroy({
       where: {
         id: req.params.id,
       },
     });
-    if (!req.params.id) {
-      return res
-        .status(404)
-        .json({ message: "Registro de enfermeiro(a) inexistente" });
+    if (!registeredNurse) {
+      return res.status(404).json({
+        message:
+          "Não encontramos o cadastro do enfermeiro(a), verifique se foi informado corretamente",
+      });
     }
 
     res.status(204).json({ message: "Excluído" });

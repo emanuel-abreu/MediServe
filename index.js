@@ -14,13 +14,14 @@ const getRoutes = require("./src/routes/getRoutes");
 const putRoutes = require("./src/routes/putRoutes");
 const deleteRoutes = require("./src/routes/deleteRoutes");
 
-app.use("/", postRoutes);
-app.use("/", getRoutes);
-app.use("/", putRoutes);
-app.use("/", deleteRoutes);
-
+// precisa ficar antes das rotas, para ele poder ler os json
 app.use(express.json());
+
+app.use("", postRoutes);
+app.use("", getRoutes);
+app.use("", putRoutes);
+app.use("", deleteRoutes);
 
 connection.sync({ alter: true });
 
-app.listen(3333, () => console.log("Servidor Online"));
+app.listen(6666, () => console.log("Servidor Online"));

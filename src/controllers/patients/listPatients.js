@@ -2,7 +2,9 @@ const Patient = require("../../modules/patient");
 
 async function listPatient(req, res) {
   try {
-    const registeredPatient = await Patient.findByPk(req.params.id);
+    const registeredPatient = await Patient.findOne({
+      where: { id: req.params.id },
+    });
     if (!registeredPatient) {
       return res.status(404).json({
         message:

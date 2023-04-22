@@ -12,7 +12,6 @@ const updateNurse = require("../controllers/nurses/updateNurse");
 
 const router = express.Router();
 
-// OTIMIZAR E VALIDAR ESSAS ROTAS DE ATUALIZAÇÃO
 router.put("/api/patients/:id", updatePatient);
 router.put("/api/patients/:id/status", updateStatusPatient);
 router.put("/api/doctors/:id", updateDoctor);

@@ -10,17 +10,23 @@ async function updateNurse(req, res) {
       });
     }
 
-    if (!req.body.date_of_bith) {
+    if (req.body.date_of_bith && req.body.date_of_bith === "") {
       return res.status(400).json({
         message:
           "O campo 'Data de nascimento' é obrigatório e deve ser preenchido corretamente.",
       });
-    } else if (!req.body.formation_institution) {
+    } else if (
+      req.body.formation_institution &&
+      req.body.formation_institution === ""
+    ) {
       return res.status(400).json({
         message:
           "O campo 'Instituição de formação' é obrigatório e deve ser preenchido corretamente.",
       });
-    } else if (!req.body.cofen_registration) {
+    } else if (
+      req.body.cofen_registration &&
+      req.body.cofen_registration === ""
+    ) {
       return res.status(400).json({
         message:
           "O campo 'Registro COFEN' é obrigatório e deve ser preenchido corretamente.",
@@ -37,6 +43,13 @@ async function updateNurse(req, res) {
       req.body.formation_institution || registeredNurse.formation_institution;
     registeredNurse.cofen_registration =
       req.body.cofen_registration || registeredNurse.cofen_registration;
+
+    // Não deixar colocar um cpf que já existe (extra)
+    if (registeredNurse.cpf) {
+      return res
+        .status(409)
+        .json({ message: "Já existe um CPF com esse número cadastrado." });
+    }
 
     await registeredNurse.save();
     res.status(200).json(registeredNurse);

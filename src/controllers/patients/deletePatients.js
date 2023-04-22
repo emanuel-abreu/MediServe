@@ -2,15 +2,18 @@ const Patient = require("../../modules/patient");
 
 async function deletePatient(req, res) {
   try {
+    const registeredPatient = await Patient.findByPk(req.params.id);
+
     await Patient.destroy({
       where: {
         id: req.params.id,
       },
     });
-    if (!req.params.id) {
-      return res
-        .status(404)
-        .json({ message: "Registro do paciente inexistente" });
+    if (!registeredPatient) {
+      return res.status(404).json({
+        message:
+          "Não encontramos o cadastro do paciente, verifique se foi informado corretamente",
+      });
     }
 
     res.status(204).json({ message: "Excluído" });

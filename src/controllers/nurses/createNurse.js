@@ -14,17 +14,15 @@ async function createNurse(req, res) {
 
     if (!nurse.date_of_bith) {
       return res.status(400).json({
-        message: `Data de Aniversário é obrigatório no cadastro`,
+        message: "Data de Aniversário é obrigatório no cadastro",
       });
     } else if (!nurse.formation_institution) {
       return res.status(400).json({
-        message: `
-        Instituição de graduação é obrigatório no cadastro`,
+        message: "Instituição de formação é obrigatório no cadastro",
       });
     } else if (!nurse.cofen_registration) {
       return res.status(400).json({
-        message: `
-        Cadastro COFEN/UF é obrigatório no cadastro`,
+        message: "Cadastro COFEN/UF é obrigatório no cadastro",
       });
     }
 

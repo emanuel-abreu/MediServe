@@ -15,7 +15,6 @@ const Nurse = connection.define("nurse", {
     type: Sequelize.STRING,
     allowNull: true,
   },
-  // validar
   date_of_bith: {
     type: Sequelize.DATEONLY,
     allowNull: false,
@@ -28,12 +27,10 @@ const Nurse = connection.define("nurse", {
     type: Sequelize.STRING,
     allowNull: true,
   },
-  // obrigatório
   formation_institution: {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  // obrigatório
   cofen_registration: {
     type: Sequelize.STRING,
     allowNull: false,

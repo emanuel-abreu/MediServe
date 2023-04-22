@@ -2,11 +2,13 @@ const Doctor = require("../../modules/doctor");
 
 async function listDoctor(req, res) {
   try {
-    const registeredDoctor = await Doctor.findByPk(req.params.id);
+    const registeredDoctor = await Doctor.findOne({
+      where: { id: req.params.id },
+    });
     if (!registeredDoctor) {
       return res.status(404).json({
         message:
-          "Não encontramos o cadastro do médico, verifique se foi informado corretamente",
+          "Não encontramos o cadastro do médico(a), verifique se foi informado corretamente",
       });
     }
     res.status(200).json(registeredDoctor);

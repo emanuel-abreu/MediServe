@@ -10,6 +10,6 @@ const router = express.Router();
 router.post("/api/patients", createPatient);
 router.post("/api/doctors", createDoctor);
 router.post("/api/nurses", createNurse);
-router.post("/api/atendimentos", createService);
+router.post("/api/services", createService);
 
 module.exports = router;

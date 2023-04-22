@@ -15,22 +15,20 @@ async function createDoctor(req, res) {
 
     if (!doctor.date_of_bith) {
       return res.status(400).json({
-        message: `Data de nascimento é obrigatório no cadastro`,
+        message: "Data de nascimento é obrigatório no cadastro",
       });
     } else if (!doctor.formation_institution) {
       return res.status(400).json({
-        message: `
-        Instituição de formação é obrigatório no cadastro`,
+        message: "Instituição de formação é obrigatório no cadastro",
       });
     } else if (!doctor.crm_registration) {
       return res.status(400).json({
-        message: `
-        Registro CRM/UF é obrigatório no cadastro`,
+        message: "Registro CRM/UF é obrigatório no cadastro",
       });
     } else if (!doctor.clinical_expertise) {
       return res.status(400).json({
-        message: `
-        Especialidade clínica é obrigatório no cadastro`,
+        message:
+          "O campo Especialidade clínica é obrigatório e não foi preenchido ou foi digitado incorretamente.",
       });
     }
 

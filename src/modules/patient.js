@@ -15,7 +15,6 @@ const Patient = connection.define("patient", {
     type: Sequelize.STRING,
     allowNull: true,
   },
-  // VALIDAR A DATA
   date_of_bith: {
     type: Sequelize.DATEONLY,
     allowNull: false,
@@ -46,7 +45,6 @@ const Patient = connection.define("patient", {
   },
   status: {
     type: Sequelize.ENUM([
-      // Boa prática deixar em caixa alta
       "AGUARDANDO_ATENDIMENTO",
       "EM_ATENDIMENTO",
       "ATENDIDO",
