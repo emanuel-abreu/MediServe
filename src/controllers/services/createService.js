@@ -1,6 +1,6 @@
-const Service = require("../../modules/service");
-const Doctor = require("../../modules/doctor");
-const Patient = require("../../modules/patient");
+const Service = require("../../models/service");
+const Doctor = require("../../models/doctor");
+const Patient = require("../../models/patient");
 
 async function createService(req, res) {
   try {

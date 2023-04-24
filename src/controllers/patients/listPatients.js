@@ -1,4 +1,4 @@
-const Patient = require("../../modules/patient");
+const Patient = require("../../models/patient");
 
 async function listPatient(req, res) {
   try {

@@ -1,4 +1,4 @@
-const Nurse = require("../../modules/nurse");
+const Nurse = require("../../models/nurse");
 
 async function deleteNurse(req, res) {
   try {

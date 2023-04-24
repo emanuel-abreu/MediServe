@@ -1,7 +1,7 @@
 const { Sequelize } = require("sequelize");
 const connection = require("../database/labmedicinebd");
-const Doctor = require("../modules/doctor");
-const Patient = require("../modules/patient");
+const Doctor = require("../models/doctor");
+const Patient = require("../models/patient");
 
 const Service = connection.define("service", {
   id: {
