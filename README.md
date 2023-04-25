@@ -85,6 +85,17 @@ Para executar esta API em sua máquina, siga os seguintes passos:
 8. Execute o comando npm start para iniciar o servidor da API.
 
 
+## Variáveis de Ambiente
+
+Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de ambiente no seu .env
+
+`API_KEY`
+
+`ANOTHER_API_KEY`
+
+
+
+
 ## Documentação da API
 
 #### Retorna todos os itens
