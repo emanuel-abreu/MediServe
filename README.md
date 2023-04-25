@@ -74,10 +74,12 @@ Para executar esta API em sua máquina, siga os seguintes passos:
 
 | Variável | Valor                    |
 |----------|--------------------------|
-| DB_HOST  | localhost                |
-| DB_USERNAME | seu_usuario_do_postgres |
-| DB_PASSWORD | sua_senha_do_postgres  |
-| DB_NAME   | nome_do_seu_banco_de_dados |
+| DIALECT_DATABASE  | postgres                |
+| HOST_DATABASE  | localhost                |
+| USER_DATABASE | seu_usuario_do_postgres |
+| PASSWORD_DATABASE | sua_senha_do_postgres  |
+| PORT_DATABASE | porta_no_postgres  |
+| NAME_DATABASE  | nome_do_seu_banco_de_dados |
 
 7. Execute o comando npx sequelize db:migrate para criar as tabelas do banco de dados;
 8. Execute o comando npm start para iniciar o servidor da API.
@@ -101,24 +103,3 @@ Para saber mais detalhes sobre cada endpoint, você pode verificar a documentaç
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
 [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/). 
 Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
-
-### 🎲 Rodando o Back End (servidor)
-
-```bash
-# Clone este repositório
-$ git clone <https://github.com/tgmarinho/nlw1>
-
-# Acesse a pasta do projeto no terminal/cmd
-$ cd nlw1
-
-# Vá para a pasta server
-$ cd server
-
-# Instale as dependências
-$ npm install
-
-# Execute a aplicação em modo de desenvolvimento
-$ npm run dev:server
-
-# O servidor inciará na porta:3333 - acesse <http://localhost:3333>
-```
