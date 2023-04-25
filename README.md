@@ -88,10 +88,13 @@ Para executar esta API em sua máquina, siga os seguintes passos:
 ## 📌 Endpoints Disponíveis
 A API possui os seguintes endpoints:
 
+- [Link para a rota /patients/:id](./patients/id.md)
 - /patients - CRUD de pacientes;
 - /doctors - CRUD de médicos;
 - /nurses - CRUD de enfermeiros;
 - /services - Realizar atendimento.
+
+
 
 
 Para saber mais detalhes sobre cada endpoint, você pode verificar a documentação da API.
