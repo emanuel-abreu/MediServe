@@ -38,7 +38,7 @@ Tabela de conteúdos
 <!--te-->
 
 
-### 🛠 Tecnologias
+## 🛠 Tecnologias
 
 As seguintes ferramentas foram usadas na construção do projeto:
 
@@ -47,8 +47,9 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [PostgreSQL](https://www.postgresql.org/)
 - [Git](https://git-scm.com/)
 - [Sequelize ORM](https://sequelize.org/)
+- [dotenv](https://www.npmjs.com/package/dotenv)
 
-### Dependências
+## Dependências
 
 As seguintes dependências foram instaladas neste projeto:
 
@@ -59,6 +60,39 @@ As seguintes dependências foram instaladas neste projeto:
 | pg | 8.10.0 |
 | pg-hstore | 2.3.4 |
 | sequelize | 6.31.0 |
+| dotenv | 16.0.3 |
+
+## 🛠️ Instalação e Configuração
+Para executar esta API em sua máquina, siga os seguintes passos:
+
+1. Instale o Node.js em seu computador;
+2. Instale o PostgreSQL em sua máquina;
+3. Clone este repositório em seu computador;
+4. Navegue até a pasta do projeto através do terminal ou prompt de comando;
+5. Execute o comando npm install para instalar as dependências do projeto;
+6. Crie um arquivo .env na raiz do projeto, seguindo o exemplo abaixo e preencha com as informações do seu banco de dados:
+
+| Variável | Valor                    |
+|----------|--------------------------|
+| DB_HOST  | localhost                |
+| DB_USERNAME | seu_usuario_do_postgres |
+| DB_PASSWORD | sua_senha_do_postgres  |
+| DB_NAME   | nome_do_seu_banco_de_dados |
+
+7. Execute o comando npx sequelize db:migrate para criar as tabelas do banco de dados;
+8. Execute o comando npm start para iniciar o servidor da API.
+
+
+## 📌 Endpoints Disponíveis
+A API possui os seguintes endpoints:
+
+- /patients - CRUD de pacientes;
+- /doctors - CRUD de médicos;
+- /nurses - CRUD de enfermeiros;
+- /services - Realizar atendimento.
+
+
+Para saber mais detalhes sobre cada endpoint, você pode verificar a documentação da API.
 
 
 
