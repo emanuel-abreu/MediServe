@@ -88,27 +88,27 @@ A pasta [src] contém todo o código da aplicação, e é onde as principais fun
 
   - `database/`: Pasta que contém as configurações de acesso ao banco de dados.
 
-    - `config.js`: Arquivo que exporta as configurações do banco de dados.
+    - `labmedicinebd.js`: Arquivo que exporta as configurações do banco de dados.
 
   - `models/`: Pasta que contém as definições dos modelos do banco de dados.
 
     - `doctor.js`: Modelo do banco de dados relacionado aos médicos.
 
-    - `patient.js`: Modelo do banco de dados relacionado aos pacientes.
+    - `nurse.js`: Modelo do banco de dados relacionado aos pacientes.
 
-    - `nurse.js`: Modelo do banco de dados relacionado aos enfermeiros.
+    - `patient.js`: Modelo do banco de dados relacionado aos enfermeiros.
 
     - `service.js`: Modelo do banco de dados relacionado aos serviços.
 
   - `routes/`: Pasta que contém as definições das rotas da aplicação.
 
-    - `doctor.js`: Arquivo que exporta as rotas relacionadas aos médicos.
+    - `deleteRoutes.js`: Arquivo que exporta as rotas relacionadas nas exclusões.
 
-    - `patients.js`: Arquivo que exporta as rotas relacionadas aos pacientes.
+    - `getRoutes.js`: Arquivo que exporta as rotas relacionadas às listagens.
 
-    - `nurses.js`: Arquivo que exporta as rotas relacionadas aos enfermeiros.
+    - `postRoutes.js`: Arquivo que exporta as rotas relacionadas nos cadastros.
 
-    - `services.js`: Arquivo que exporta as rotas relacionadas aos serviços.
+    - `putRoutes.js`: Arquivo que exporta as rotas relacionadas nas atualizações.
 
 
 ## 📌 Endpoints Disponíveis
