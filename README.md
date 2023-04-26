@@ -71,6 +71,46 @@ A pasta [src] contém todo o código da aplicação, e é onde as principais fun
 
 - [routes]: contém as definições das rotas da aplicação, que mapeiam as requisições HTTP para as funções correspondentes nos controladores.
 
+
+- `index.js`: Arquivo principal do projeto que inicia o servidor.
+
+- `src/`: Pasta que contém o código-fonte da aplicação.
+
+  - `controllers/`: Pasta que contém os controladores da aplicação, que fazem o gerenciamento das requisições.
+
+    - `doctors/`: Controladores que fazem o gerenciamento das requisições relacionados ao médico.
+    
+    - `nurses/`: Controladores que fazem o gerenciamento das requisições relacionados ao enfermeiros.
+
+    - `patients/`: Controladores que fazem o gerenciamento das requisições relacionados ao pacientes.
+
+    - `services/`: Controladores que fazem o gerenciamento das requisições relacionados aos atendimentos.
+
+  - `database/`: Pasta que contém as configurações de acesso ao banco de dados.
+
+    - `config.js`: Arquivo que exporta as configurações do banco de dados.
+
+  - `models/`: Pasta que contém as definições dos modelos do banco de dados.
+
+    - `doctor.js`: Modelo do banco de dados relacionado aos médicos.
+
+    - `patient.js`: Modelo do banco de dados relacionado aos pacientes.
+
+    - `nurse.js`: Modelo do banco de dados relacionado aos enfermeiros.
+
+    - `service.js`: Modelo do banco de dados relacionado aos serviços.
+
+  - `routes/`: Pasta que contém as definições das rotas da aplicação.
+
+    - `doctor.js`: Arquivo que exporta as rotas relacionadas aos médicos.
+
+    - `patients.js`: Arquivo que exporta as rotas relacionadas aos pacientes.
+
+    - `nurses.js`: Arquivo que exporta as rotas relacionadas aos enfermeiros.
+
+    - `services.js`: Arquivo que exporta as rotas relacionadas aos serviços.
+
+
 ## 📌 Endpoints Disponíveis
 
 #### Cadastro de Pacientes
