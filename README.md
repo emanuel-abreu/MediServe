@@ -1,11 +1,10 @@
 <h1 align="center">LABMedicine</h1>
 
-
 <p>A LABMedicine está desenvolvendo uma API Rest para armazenar informações de pacientes, enfermeiros e médicos em um sistema automatizado de atendimento. O objetivo é automatizar alguns processos nos atendimentos de pacientes em âmbito hospitalar, facilitando o gerenciamento de informações e tornando o atendimento mais eficiente. Através da API, é possível cadastrar informações básicas de pacientes, como nome, data de nascimento, sexo, telefone e CPF. Também é possível cadastrar informações de enfermeiros e médicos, como instituição de graduação, especialidade(médicos), COFEN e CRM.
 
 A LABMedicine acredita que essa API será um passo importante para a modernização dos processos de atendimento em hospitais, tornando o atendimento mais eficiente e melhorando a qualidade do atendimento aos pacientes.
-</p>
 
+</p>
 
 ## 🛠 Tecnologias
 
@@ -22,16 +21,16 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 As seguintes dependências foram instaladas neste projeto:
 
-| Pacote | Versão |
-|--------|--------|
-| dotenv | 16.0.3 |
-| express | 4.18.2 |
-| pg | 8.10.0 |
-| pg-hstore | 2.3.4 |
+| Pacote    | Versão |
+| --------- | ------ |
+| express   | 4.18.2 |
+| pg        | 8.10.0 |
+| pg-hstore | 2.3.4  |
 | sequelize | 6.31.0 |
-| dotenv | 16.0.3 |
+| dotenv    | 16.0.3 |
 
 ## 🛠️ Instalação e Configuração
+
 Para executar esta API em sua máquina, siga os seguintes passos:
 
 1. Instale o Node.js em seu computador;
@@ -41,18 +40,17 @@ Para executar esta API em sua máquina, siga os seguintes passos:
 5. Execute o comando npm install para instalar as dependências do projeto;
 6. Crie um arquivo .env na raiz do projeto, seguindo o exemplo abaixo e preencha com as informações do seu banco de dados:
 
-| Variável | Valor                    |
-|----------|--------------------------|
-| DIALECT_DATABASE  | postgres                |
-| HOST_DATABASE  | localhost                |
-| USER_DATABASE | seu_usuario_do_postgres |
-| PASSWORD_DATABASE | sua_senha_do_postgres  |
-| PORT_DATABASE | porta_no_postgres  |
-| NAME_DATABASE  | nome_do_seu_banco_de_dados |
+| Variável          | Valor                      |
+| ----------------- | -------------------------- |
+| DIALECT_DATABASE  | postgres                   |
+| HOST_DATABASE     | localhost                  |
+| USER_DATABASE     | seu_usuario_do_postgres    |
+| PASSWORD_DATABASE | sua_senha_do_postgres      |
+| PORT_DATABASE     | porta_no_postgres          |
+| NAME_DATABASE     | nome_do_seu_banco_de_dados |
 
 7. Execute o comando npx sequelize db:migrate para criar as tabelas do banco de dados;
 8. Execute o comando npm start para iniciar o servidor da API.
-
 
 ## Variáveis de Ambiente
 
@@ -62,69 +60,29 @@ Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de
 
 `ANOTHER_API_KEY`
 
-
-
-
-## Documentação da API
-
-#### Retorna todos os itens
-
-```http
-  GET /api/items
-```
-
-| Parâmetro   | Tipo       | Descrição                           |
-| :---------- | :--------- | :---------------------------------- |
-| `api_key` | `string` | **Obrigatório**. A chave da sua API |
-
-#### Retorna um item
-
-```http
-  GET /api/items/${id}
-```
-
-| Parâmetro   | Tipo       | Descrição                                   |
-| :---------- | :--------- | :------------------------------------------ |
-| `id`      | `string` | **Obrigatório**. O ID do item que você quer |
-
-#### add(num1, num2)
-
-Recebe dois números e retorna a sua soma.
-
-
-
 ## 📌 Endpoints Disponíveis
-A API possui os seguintes endpoints:
-
-- [Link para a rota /patients/:id](./patients/id.md)
-- /patients - CRUD de pacientes;
-- /doctors - CRUD de médicos;
-- /nurses - CRUD de enfermeiros;
-- /services - Realizar atendimento.
-
-
-## Documentação da API
 
 #### Cadastro de Pacientes
 
 ```http
   POST /api/patients
 ```
+
 No corpo da request, informar objeto json com os campos
 
-| Parâmetro   | Tipo       | Descrição                           |
-| :---------- | :--------- | :---------------------------------- |
-| `name` | `String` |  Nome  |
-| `gender` | `String` |  Gênero |
-| `date_of_bith` | `DATEONLY` | **Obrigatório**. Data de Nascimento formato(MM/DD/AAAA) |
-| `cpf` | `String` |  CPF |
-| `phone` | `String` |  Telefone |
-| `emergency_contact` | `String` | **Obrigatório**. Contato de Emergência  |
-| `allergy_list` | `String` |  Lista de alergias |
-| `specific_care_list` | `String` | Lista de cuidados específicos |
-| `agreement` | `String` |  Convênio |
-| `status` | `ENUM` |  values: ["AGUARDANDO_ATENDIMENTO","EM_ATENDIMENTO","ATENDIDO","NAO_ATENDIDO"] |
-| `total_of_services` | `Integer` |  defaultValue: 0 |
+| Parâmetro            | Tipo       | Descrição                                                                     |
+| :------------------- | :--------- | :---------------------------------------------------------------------------- |
+| `name`               | `String`   | Nome                                                                          |
+| `gender`             | `String`   | Gênero                                                                        |
+| `date_of_bith`       | `DATEONLY` | **Obrigatório**. Data de Nascimento formato(MM/DD/AAAA)                       |
+| `cpf`                | `String`   | CPF                                                                           |
+| `phone`              | `String`   | Telefone                                                                      |
+| `emergency_contact`  | `String`   | **Obrigatório**. Contato de Emergência                                        |
+| `allergy_list`       | `String`   | Lista de alergias                                                             |
+| `specific_care_list` | `String`   | Lista de cuidados específicos                                                 |
+| `agreement`          | `String`   | Convênio                                                                      |
+| `status`             | `ENUM`     | values: ["AGUARDANDO_ATENDIMENTO","EM_ATENDIMENTO","ATENDIDO","NAO_ATENDIDO"] |
+| `total_of_services`  | `Integer`  | defaultValue: 0                                                               |
 
 ```http
   Exemplo de uso:
@@ -137,7 +95,7 @@ No corpo da request, informar objeto json com os campos
 	"emergency_contact":"85 90000 0000",
 	"allergy":"camarão",
 	"specific_care_list":"nenhum",
-	"agreement":"SUS"	
+	"agreement":"SUS"
 }
 
 Retorno:
@@ -160,113 +118,167 @@ Retorno:
 }
 
 ```
-Response: 
 
-- HTTP Status Code 201 (CREATED) 
+Response:
+
+- HTTP Status Code 201 (CREATED)
 
 Retorna o objeto com os dados do paciente criado.
 
 - HTTP Status Code 400 (Bad Request)
 
 Mensagem: "Data de Aniversário é obrigatório no cadastro" ou
- "Contato de emergência é obrigatório no cadastro"
+"Contato de emergência é obrigatório no cadastro"
 
-- HTTP Status Code 409 (Conflict) 
+- HTTP Status Code 409 (Conflict)
 
 Mensagem: "Já existe um CPF com esse número cadastrado."
 
-- HTTP Status Code 500 (Internal Serve Error) 
+- HTTP Status Code 500 (Internal Serve Error)
 
 Mensagem: "Não conseguimos processar sua solicitação"
 
---------------------------------
+---
 
-#### Atualiza um paciente
+#### Atualiza um Paciente
 
 ```http
-  PUT /api/pacientes/{id}
+  PUT /api/patients/:{id}
 ```
 
 No corpo da request, informar objeto json com os campos
 
-| Parâmetro   | Tipo       | Descrição                                   |
-| :---------- | :--------- | :------------------------------------------ |
-| `id`      | `INTEGER` | **Obrigatório**. O ID do Paciente que você quer atualizar |
-| `name` | `String` |  Nome  |
-| `gender` | `String` |  Gênero |
-| `birthday` | `String` |  Data Nascimento formato(01/01/2000) |
-| `cpf` | `String` |  CPF |
-| `phone` | `String` |  Telefone |
-| `emergencyContact` | `String` | Contato de Emergência  |
-| `allergy` | `String` |  Alergias |
-| `specificCare` | `String` |  Cuidados específicos |
-| `healthInsurance` | `String` |  Convênio |
-| `status` | `ENUM` |  values: ['aguardando_atendimento', 'em_atendimento', 'atendido', 'nao_atendido'] - defaultValue: 'nao_atendido' |
-| `servicesPerdomed` | `String` |  defaultValue: '0' |
+| Parâmetro            | Tipo       | Descrição                                                                     |
+| :------------------- | :--------- | :---------------------------------------------------------------------------- |
+| `name`               | `String`   | Nome                                                                          |
+| `gender`             | `String`   | Gênero                                                                        |
+| `date_of_bith`       | `DATEONLY` | **Obrigatório**. Data de Nascimento formato(MM/DD/AAAA)                       |
+| `cpf`                | `String`   | CPF                                                                           |
+| `phone`              | `String`   | Telefone                                                                      |
+| `emergency_contact`  | `String`   | **Obrigatório**. Contato de Emergência                                        |
+| `allergy_list`       | `String`   | Lista de alergias                                                             |
+| `specific_care_list` | `String`   | Lista de cuidados específicos                                                 |
+| `agreement`          | `String`   | Convênio                                                                      |
+| `status`             | `ENUM`     | values: ["AGUARDANDO_ATENDIMENTO","EM_ATENDIMENTO","ATENDIDO","NAO_ATENDIDO"] |
+| `total_of_services`  | `Integer`  | defaultValue: 0                                                               |
 
-Response: 
+Response:
 
-HTTP Status Code 200 (OK)
+- HTTP Status Code 200 (OK)
 
-HTTP Status Code 400 (Bad Request)
+Retorna o objeto com os dados do paciente atualizados.
 
-HTTP Status Code 404 (Not Found) em caso de não ser encontrado registro com o código informado
+- HTTP Status Code 400 (Bad Request)
+
+Caso não seja requerido atualizar, porém esteja vazio.
+
+Mensagem: "O campo 'Data de nascimento' é obrigatório e deve ser preenchido corretamente.(Ex: MM/DD/AAAA)" ou
+"O campo 'Contato de emergência' é obrigatório e deve ser preenchido corretamente."
+
+- HTTP Status Code 404 (Not Found)
+
+Mensagem: "Não encontramos o cadastro do paciente, verifique se foi informado corretamente"
+
+- HTTP Status Code 500 (Internal Serve Error)
+
+Mensagem: "Não conseguimos processar sua solicitação"
 
 #### O sistema irá atualizar apenas os campos enviados via body no formado de JSON
 
-
---------------------------------
-
+---
 
 #### Atualiza Status de um paciente
 
 ```http
-  PUT /api/pacientes/{id}/status=""
+  PUT /api/patients/:{id}/status
 ```
 
 No corpo da request, informar objeto json com os campos
 
-| Parâmetro   | Tipo       | Descrição                                   |
-| :---------- | :--------- | :------------------------------------------ |
-| `id`      | `INTEGER` | **Obrigatório**. O ID do Paciente que você quer atualizar |
-| `status` | `ENUM` |  values: ['aguardando_atendimento', 'em_atendimento', 'atendido', 'nao_atendido'] - defaultValue: 'nao_atendido' |
-
+| Parâmetro | Tipo      | Descrição                                                                     |
+| :-------- | :-------- | :---------------------------------------------------------------------------- |
+| `id`      | `INTEGER` | **Obrigatório**. O ID do Paciente que você quer atualizar                     |
+| `status`  | `ENUM`    | values: ["AGUARDANDO_ATENDIMENTO","EM_ATENDIMENTO","ATENDIDO","NAO_ATENDIDO"] |
 
 #### Atualiza Status de um paciente só serão aceitos as Strings descrita no status, caso seja enviado um status diferente o sistema irá retornar um erro.
 
+Response:
 
---------------------------------
+- HTTP Status Code 200 (OK)
 
+Retorna o objeto com os dados do paciente atualizados.
 
-#### Recebe todos os pacientes cadastrados na base, sendo possível filtrar via "query params". 
-Exemplo: /api/pacientes?status=atendido
+- HTTP Status Code 400 (Bad Request)
+
+Caso não seja requerido atualizar, porém o status esteja incorreto.
+
+Mensagem: "Status inválido, verifique se foi informado corretamente"
+
+- HTTP Status Code 404 (Not Found)
+
+Mensagem: "Não encontramos o cadastro do paciente, verifique se foi informado corretamente"
+
+- HTTP Status Code 500 (Internal Serve Error)
+
+Mensagem: "Não conseguimos processar sua solicitação"
+
+---
+
+#### Recebe todos os pacientes cadastrados na base, sendo possível filtrar via "query params".
+
+Exemplo: /api/patients?status=ATENDIDO
 O sistema irá listar todos os pacientes que se encaixe no status passado via query params.
 
 ```http
-  GET /api/pacientes/
+  GET /api/patients
 ```
 
+Response:
 
-Response: 
+- HTTP Status Code 200 (OK)
+  Retorna a lista de todos os pacientes cadastrados.
 
-HTTP Status Code 200 (OK), com a lista de pacientes.
+- HTTP Status Code 500 (Internal Serve Error)
+
+Mensagem: "Não conseguimos processar sua solicitação"
+
+ou
 
 ```http
-  GET /api/pacientes/{id}
+  GET /api/patients?status=NAO_ATENDIDO
 ```
 
-| Parâmetro   | Tipo       | Descrição                                   |
-| :---------- | :--------- | :------------------------------------------ |
-| `id`      | `INTEGER` | **Obrigatório**. O ID do Paciente que você quer listar|
+Response:
 
-Response: 
+- HTTP Status Code 200 (OK)
+  Retorna a lista de todos os pacientes que estão com o status = NAO_ATENDIDO.
 
-HTTP Status Code 200 (OK), com os dados do paciente.
+- HTTP Status Code 500 (Internal Serve Error)
 
-HTTP Status Code 404 (Not Found) em caso de não ser encontrado registro com o código informado
+Mensagem: "Não conseguimos processar sua solicitação"
 
+```http
+  GET /api/patients/:{id}
+```
 
---------------------------------
+| Parâmetro | Tipo      | Descrição                                              |
+| :-------- | :-------- | :----------------------------------------------------- |
+| `id`      | `INTEGER` | **Obrigatório**. O ID do Paciente que você quer listar |
+
+Response:
+
+- HTTP Status Code 200 (OK)
+  Retorn os dados do paciente passado no params.
+
+- HTTP Status Code 404 (Not Found)
+
+Mensagem: "Não encontramos o cadastro do paciente, verifique se foi informado corretamente"
+
+- HTTP Status Code 500 (Internal Serve Error)
+
+Mensagem: "Não conseguimos processar sua solicitação"
+
+---
 
 #### Exclusão de Paciente
 
@@ -274,42 +286,42 @@ HTTP Status Code 404 (Not Found) em caso de não ser encontrado registro com o c
   DELETE /api/patients/:{id}
 ```
 
-| Parâmetro   | Tipo       | Descrição                                   |
-| :---------- | :--------- | :------------------------------------------ |
-| `id`      | `INTEGER` | **Obrigatório**. O ID do Paciente que você quer deletar|
+| Parâmetro | Tipo      | Descrição                                               |
+| :-------- | :-------- | :------------------------------------------------------ |
+| `id`      | `INTEGER` | **Obrigatório**. O ID do Paciente que você quer deletar |
 
 Response:
 
 - HTTP Status Code 204 (No Content) em caso de sucesso, sem necessidade de response body.
 
-- HTTP Status Code 404 (Not Found) 
- 
+- HTTP Status Code 404 (Not Found)
+
 Mensagem: "Não encontramos o cadastro do paciente, verifique se foi informado corretamente"
 
-- HTTP Status Code 500 (Internal Serve Error) 
+- HTTP Status Code 500 (Internal Serve Error)
 
 Mensagem: "Não conseguimos processar sua solicitação"
 
------------------------------------------------
+---
 
-#### Cadastro de Medicos
+#### Cadastro de Médicos
 
 ```http
   POST /api/doctors
 ```
 
-| Parâmetro   | Tipo       | Descrição                           |
-| :---------- | :--------- | :---------------------------------- |
-| `name` | `String` |  Nome  |
-| `gender` | `String` |  Gênero |
-| `date_of_bith` | `DATEONLY` |**Obrigatório**. Data de Nascimento formato(MM/DD/AAAA)|
-| `cpf` | `String` |  CPF |
-| `phone` | `String` |  Telefone |
-| `formation_institutio` | `String` | **Obrigatório**. Instituição de formação  |
-| `crm_registration` | `String` |  **Obrigatório**. Registro CRM |
-| `clinical_expertise` | `ENUM` |**Obrigatório**.values["CLINICO_GERAL","ANESTESISTA","DERMATOLOGIA","GINECOLOGIA","NEUROLOGIA","PEDIATRIA","PSIQUIATRIA","ORTOPEDIA"] |
-| `status` | `ENUM` |  values: ['ATIVO','INATIVO'],    defaultValue: 'ATIVO' |
-| `total_of_services` | `Integer` |  defaultValue: 0 |
+| Parâmetro              | Tipo       | Descrição                                                                                                                             |
+| :--------------------- | :--------- | :------------------------------------------------------------------------------------------------------------------------------------ |
+| `name`                 | `String`   | Nome                                                                                                                                  |
+| `gender`               | `String`   | Gênero                                                                                                                                |
+| `date_of_bith`         | `DATEONLY` | **Obrigatório**. Data de Nascimento formato(MM/DD/AAAA)                                                                               |
+| `cpf`                  | `String`   | CPF                                                                                                                                   |
+| `phone`                | `String`   | Telefone                                                                                                                              |
+| `formation_institutio` | `String`   | **Obrigatório**. Instituição de formação                                                                                              |
+| `crm_registration`     | `String`   | **Obrigatório**. Registro CRM                                                                                                         |
+| `clinical_expertise`   | `ENUM`     | **Obrigatório**.values["CLINICO_GERAL","ANESTESISTA","DERMATOLOGIA","GINECOLOGIA","NEUROLOGIA","PEDIATRIA","PSIQUIATRIA","ORTOPEDIA"] |
+| `status`               | `ENUM`     | values: ['ATIVO','INATIVO'], defaultValue: 'ATIVO'                                                                                    |
+| `total_of_services`    | `Integer`  | defaultValue: 0                                                                                                                       |
 
 ```http
   Exemplo de uso:
@@ -343,95 +355,164 @@ Retorno:
 	},
 
 ```
-Response: 
 
-- HTTP Status Code 201 (CREATED) 
+Response:
+
+- HTTP Status Code 201 (CREATED)
 
 Retorna o objeto com os dados do médico criado.
 
 - HTTP Status Code 400 (Bad Request)
 
 Mensagem: "Data de Aniversário é obrigatório no cadastro" ou
- "Instituição de formação é obrigatório no cadastro" ou "Registro CRM/UF é obrigatório no cadastro" ou "O campo Especialidade clínica é obrigatório e não foi preenchido ou foi digitado incorretamente."
+"Instituição de formação é obrigatório no cadastro" ou "Registro CRM/UF é obrigatório no cadastro" ou "O campo Especialidade clínica é obrigatório e não foi preenchido ou foi digitado incorretamente."
 
-- HTTP Status Code 409 (Conflict) 
+- HTTP Status Code 409 (Conflict)
 
 Mensagem: "Já existe um CPF com esse número cadastrado."
 
-- HTTP Status Code 500 (Internal Serve Error) 
+- HTTP Status Code 500 (Internal Serve Error)
 
 Mensagem: "Não conseguimos processar sua solicitação"
 
---------------------------------
+---
 
 #### Atualiza um médico
 
 ```http
-  PUT /api/medicos/{id}
+  PUT /api/doctors/:{id}
 ```
-No corpo da request, informar objeto json com os campos
-| Parâmetro   | Tipo       | Descrição                                   |
-| :---------- | :--------- | :------------------------------------------ |
-| `name` | `String` |  Nome  |
-| `gender` | `String` |  Gênero |
-| `birthday` | `String` |  Data Nascimento formato(01/01/2000) |
-| `cpf` | `String` |  CPF |
-| `phone` | `String` |  Telefone |
-| `college` | `String` |  Instituição de ensino superior  |
-| `crm` | `String` |  CRM |
-| `specialization` | `ENUM` |  values: ['clínico_geral', 'anestesista', 'dermatologia', 'ginecologia', 'neurologia', 'pediatria', 'psiquiatria', 'ortopedia'] defaultValue: clínico_geral' |
-| `status` | `ENUM` |  values: ['ativo','inativo'],    defaultValue: 'ativo' |
-| `servicesPerdomed` | `String` |  defaultValue: '0' |
 
-Response: 
+| Parâmetro              | Tipo       | Descrição                                                                                                                             |
+| :--------------------- | :--------- | :------------------------------------------------------------------------------------------------------------------------------------ |
+| `name`                 | `String`   | Nome                                                                                                                                  |
+| `gender`               | `String`   | Gênero                                                                                                                                |
+| `date_of_bith`         | `DATEONLY` | **Obrigatório**. Data de Nascimento formato(MM/DD/AAAA)                                                                               |
+| `cpf`                  | `String`   | CPF                                                                                                                                   |
+| `phone`                | `String`   | Telefone                                                                                                                              |
+| `formation_institutio` | `String`   | **Obrigatório**. Instituição de formação                                                                                              |
+| `crm_registration`     | `String`   | **Obrigatório**. Registro CRM                                                                                                         |
+| `clinical_expertise`   | `ENUM`     | **Obrigatório**.values["CLINICO_GERAL","ANESTESISTA","DERMATOLOGIA","GINECOLOGIA","NEUROLOGIA","PEDIATRIA","PSIQUIATRIA","ORTOPEDIA"] |
+| `status`               | `ENUM`     | values: ['ATIVO','INATIVO'], defaultValue: 'ATIVO'                                                                                    |
+| `total_of_services`    | `Integer`  | defaultValue: 0                                                                                                                       |
 
-HTTP Status Code 200 (OK)
+Response:
 
-HTTP Status Code 400 (Bad Request)
+- HTTP Status Code 200 (OK)
 
-HTTP Status Code 404 (Not Found) em caso de não ser encontrado registro com o código informado
+Retorna o objeto com os dados do médico atualizados.
+
+- HTTP Status Code 400 (Bad Request)
+
+Mensagem: "O campo 'Data de nascimento' é obrigatório e deve ser preenchido corretamente.(Ex: MM/DD/AAAA)"
+ou "O campo 'Instituição de formação' é obrigatório e deve ser preenchido corretamente."
+ou "O campo 'Registro CRM' é obrigatório e deve ser preenchido corretamente."
+ou "O campo 'Especialidade clínica' é obrigatório e deve ser preenchido corretamente."
+
+- HTTP Status Code 404 (Not Found)
+
+Mensagem: "Não encontramos o cadastro do médico, verifique se foi informado corretamente"
+
+- HTTP Status Code 500 (Internal Serve Error)
+
+Mensagem: "Não conseguimos processar sua solicitação"
 
 #### O sistema irá atualizar apenas os campos enviados via body no formado de JSON
 
+---
 
---------------------------------
-
-
-#### Atualiza Status de um medicos
+#### Atualiza Status de um Médico
 
 ```http
-  PUT /api/medicos/{id}/status=""
+  PUT /api/doctors/:{id}/status
 ```
 
 No corpo da request, informar objeto json com os campos
 
-| Parâmetro   | Tipo       | Descrição                                   |
-| :---------- | :--------- | :------------------------------------------ |
-| `id`      | `INTEGER` | **Obrigatório**. O ID do Paciente que você quer atualizar |
-| `status` | `ENUM` |  values: ['ativo', 'inativo'] - defaultValue: 'ativo' |
+| Parâmetro | Tipo      | Descrição                                               |
+| :-------- | :-------- | :------------------------------------------------------ |
+| `id`      | `INTEGER` | **Obrigatório**. O ID do Médico que você quer atualizar |
+| `status`  | `ENUM`    | values: ['ATIVO','INATIVO'], defaultValue: 'ATIVO'      |
 
+#### Atualiza Status de um médico só serão aceitos as Strings descrita no status, caso seja enviado um status diferente o sistema irá retornar um erro.
 
-#### Atualiza Status de um medico só serão aceitos as Strings descrita no status, caso seja enviado um status diferente o sistema irá retornar um erro.
+Response:
 
+- HTTP Status Code 200 (OK)
 
---------------------------------
+Retorna o objeto com os dados do médico atualizados.
 
+- HTTP Status Code 400 (Bad Request)
 
-#### Recebe todos os medicos cadastrados na base, sendo possível filtrar via "query params". 
-Exemplo: /api/medicos?status=ativo
-O sistema irá listar todos os medicos que se encaixe no status passado via query params(ativo ou inativo).
+Caso não seja requerido atualizar, porém o status esteja incorreto.
+
+Mensagem: "Status inválido, verifique se foi informado corretamente"
+
+- HTTP Status Code 404 (Not Found)
+
+Mensagem: "Não encontramos o cadastro do médico, verifique se foi informado corretamente"
+
+- HTTP Status Code 500 (Internal Serve Error)
+
+Mensagem: "Não conseguimos processar sua solicitação"
+
+---
+
+#### Listagem de Médicos
+
+##### Recebe todos os médicos cadastrados na base, sendo possível filtrar via "query params".
+
+Exemplo: /api/doctors?status=ATIVO
+O sistema irá listar todos os médicos que se encaixe no status passado via query params(ATIVO ou INATIVO).
 
 ```http
-  GET /api/medicos/
+  GET /api/doctors
 ```
 
+Response:
 
-Response: 
+- HTTP Status Code 200 (OK)
+  Retorna a lista de todos os médicos cadastrados.
 
-HTTP Status Code 200 (OK), com a lista de medicos.
+- HTTP Status Code 500 (Internal Serve Error)
 
+Mensagem: "Não conseguimos processar sua solicitação"
 
---------------------------------
+ou
+
+```http
+  GET /api/doctors?status=INATIVO
+```
+
+Response:
+
+- HTTP Status Code 200 (OK)
+  Retorna a lista de todos os médicos que estão com o status = INATIVO.
+
+- HTTP Status Code 500 (Internal Serve Error)
+
+Mensagem: "Não conseguimos processar sua solicitação"
+
+```http
+  GET /api/doctors/:{id}
+```
+
+| Parâmetro | Tipo      | Descrição                                            |
+| :-------- | :-------- | :--------------------------------------------------- |
+| `id`      | `INTEGER` | **Obrigatório**. O ID do Médico que você quer listar |
+
+Response:
+
+- HTTP Status Code 200 (OK)
+  Retorna os dados do médico passado no Route params.
+
+- HTTP Status Code 404 (Not Found)
+
+Mensagem: "Não encontramos o cadastro do médico, verifique se foi informado corretamente"
+
+- HTTP Status Code 500 (Internal Serve Error)
+
+Mensagem: "Não conseguimos processar sua solicitação"
 
 #### Exclusão de médico
 
@@ -439,42 +520,41 @@ HTTP Status Code 200 (OK), com a lista de medicos.
   DELETE /api/doctors/:{id}
 ```
 
-| Parâmetro   | Tipo       | Descrição                                   |
-| :---------- | :--------- | :------------------------------------------ |
-| `id`      | `INTEGER` | **Obrigatório**. O ID do Médico que você quer deletar|
+| Parâmetro | Tipo      | Descrição                                             |
+| :-------- | :-------- | :---------------------------------------------------- |
+| `id`      | `INTEGER` | **Obrigatório**. O ID do Médico que você quer deletar |
 
 Response:
 
 - HTTP Status Code 204 (No Content) em caso de sucesso, sem necessidade de response body.
 
-- HTTP Status Code 404 (Not Found) 
- 
+- HTTP Status Code 404 (Not Found)
+
 Mensagem: "Não encontramos o cadastro do médico(a), verifique se foi informado corretamente"
 
-- HTTP Status Code 500 (Internal Serve Error) 
+- HTTP Status Code 500 (Internal Serve Error)
 
 Mensagem: "Não conseguimos processar sua solicitação"
 
-
---------------------------------------
+---
 
 #### Cadastro de Enfermeiro(a)
 
 ```http
   POST /api/nurses
 ```
+
 No corpo da request, informar objeto json com os campos
 
-| Parâmetro   | Tipo       | Descrição                           |
-| :---------- | :--------- | :---------------------------------- |
-| `name` | `String` |  Nome  |
-| `gender` | `String` |  Gênero |
-| `date_of_bith` | `DATEONLY` | **Obrigatório**. Data de Nascimento formato(MM/DD/AAAA) |
-| `cpf` | `String` | CPF |
-| `phone` | `String` |  Telefone |
-| `formation_institution` | `String` | **Obrigatório**. Instituição de formação  |
-| `cofen_registration` | `String` | **Obrigatório** Registro COFEN |
-
+| Parâmetro               | Tipo       | Descrição                                               |
+| :---------------------- | :--------- | :------------------------------------------------------ |
+| `name`                  | `String`   | Nome                                                    |
+| `gender`                | `String`   | Gênero                                                  |
+| `date_of_bith`          | `DATEONLY` | **Obrigatório**. Data de Nascimento formato(MM/DD/AAAA) |
+| `cpf`                   | `String`   | CPF                                                     |
+| `phone`                 | `String`   | Telefone                                                |
+| `formation_institution` | `String`   | **Obrigatório**. Instituição de formação                |
+| `cofen_registration`    | `String`   | **Obrigatório** Registro COFEN                          |
 
 ```http
   Exemplo de uso:
@@ -504,73 +584,109 @@ Retorno:
 	},
 
 ```
-Response: 
 
-- HTTP Status Code 201 (CREATED) 
+Response:
+
+- HTTP Status Code 201 (CREATED)
 
 Retorna o objeto com os dados do(a) enfermeiro(a) criado.
 
 - HTTP Status Code 400 (Bad Request)
 
 Mensagem: "Data de Aniversário é obrigatório no cadastro" ou
- "Instituição de formação é obrigatório no cadastro" ou "Cadastro COFEN/UF é obrigatório no cadastro".
+"Instituição de formação é obrigatório no cadastro" ou "Cadastro COFEN/UF é obrigatório no cadastro".
 
-- HTTP Status Code 409 (Conflict) 
+- HTTP Status Code 409 (Conflict)
 
 Mensagem: "Já existe um CPF com esse número cadastrado."
 
-- HTTP Status Code 500 (Internal Serve Error) 
+- HTTP Status Code 500 (Internal Serve Error)
 
 Mensagem: "Não conseguimos processar sua solicitação"
 
---------------------------------
+---
 
-#### Atualiza um médico
+#### Atualizar dados de um Enfermeiro(a)
 
 ```http
-  PUT /api/enfermeiros/{id}
+  PUT /api/nurses/:{id}
 ```
+
 No corpo da request, informar objeto json com os campos
-| Parâmetro   | Tipo       | Descrição                                   |
-| :---------- | :--------- | :------------------------------------------ |
-| `name` | `String` |  Nome  |
-| `gender` | `String` |  Gênero |
-| `birthday` | `String` |  Data Nascimento formato(01/01/2000) |
-| `cpf` | `String` |  CPF |
-| `phone` | `String` |  Telefone |
-| `college` | `String` | Instituição de ensino superior  |
-| `cofen` | `String` |  Cofen |
 
+| Parâmetro               | Tipo       | Descrição                                               |
+| :---------------------- | :--------- | :------------------------------------------------------ |
+| `name`                  | `String`   | Nome                                                    |
+| `gender`                | `String`   | Gênero                                                  |
+| `date_of_bith`          | `DATEONLY` | **Obrigatório**. Data de Nascimento formato(MM/DD/AAAA) |
+| `cpf`                   | `String`   | CPF                                                     |
+| `phone`                 | `String`   | Telefone                                                |
+| `formation_institution` | `String`   | **Obrigatório**. Instituição de formação                |
+| `cofen_registration`    | `String`   | **Obrigatório** Registro COFEN                          |
 
-Response: 
+Response:
 
-HTTP Status Code 200 (OK)
+- HTTP Status Code 200 (OK)
 
-HTTP Status Code 400 (Bad Request)
+Retorna o objeto com os dados do enfermeiro(a) atualizados.
 
-HTTP Status Code 404 (Not Found) em caso de não ser encontrado registro com o código informado
+- HTTP Status Code 400 (Bad Request)
+
+Mensagem: "O campo 'Data de nascimento' é obrigatório e deve ser preenchido corretamente.(Ex: MM/DD/AAAA)"
+ou "O campo 'Instituição de formação' é obrigatório e deve ser preenchido corretamente."
+ou "O campo 'Registro COFEN' é obrigatório e deve ser preenchido corretamente."
+
+- HTTP Status Code 404 (Not Found)
+
+Mensagem: "Não encontramos o cadastro do enfermeiro(a), verifique se foi informado corretamente"
+
+- HTTP Status Code 500 (Internal Serve Error)
+
+Mensagem: "Não conseguimos processar sua solicitação"
 
 #### O sistema irá atualizar apenas os campos enviados via body no formado de JSON
 
+---
 
---------------------------------
-
-
-#### Recebe todos os medicos cadastrados na base, sendo possível filtrar via "query params". 
-Exemplo: /api/medicos?status=ativo
-O sistema irá listar todos os medicos que se encaixe no status passado via query params(ativo ou inativo).
+#### Listagem de Enfermeiros
 
 ```http
-  GET /api/enfermeiros/
+  GET /api/nurses
 ```
 
+Response:
 
-Response: 
+- HTTP Status Code 200 (OK)
+  Retorna a lista de todos os enfermeiros cadastrados.
 
-HTTP Status Code 200 (OK), com a lista de Enfermeiro(a).
+- HTTP Status Code 500 (Internal Serve Error)
 
+Mensagem: "Não conseguimos processar sua solicitação"
 
---------------------------------
+```http
+  GET /api/nurses/:{id}
+```
+
+| Parâmetro | Tipo      | Descrição                                                |
+| :-------- | :-------- | :------------------------------------------------------- |
+| `id`      | `INTEGER` | **Obrigatório**. O ID do Enfermeiro que você quer listar |
+
+Response:
+
+Response:
+
+- HTTP Status Code 200 (OK)
+  Retorna os dados do enfermeiro(a) passado no Route params.
+
+- HTTP Status Code 404 (Not Found)
+
+Mensagem: "Não encontramos o cadastro do enfermeiro(a), verifique se foi informado corretamente"
+
+- HTTP Status Code 500 (Internal Serve Error)
+
+Mensagem: "Não conseguimos processar sua solicitação"
+
+---
 
 #### Exclusão de Enfermeiro
 
@@ -578,24 +694,23 @@ HTTP Status Code 200 (OK), com a lista de Enfermeiro(a).
   DELETE /api/nurses/:{id}
 ```
 
-| Parâmetro   | Tipo       | Descrição                                   |
-| :---------- | :--------- | :------------------------------------------ |
-| `id`      | `INTEGER` | **Obrigatório**. O ID do Enfermeiro que você quer deletar|
+| Parâmetro | Tipo      | Descrição                                                 |
+| :-------- | :-------- | :-------------------------------------------------------- |
+| `id`      | `INTEGER` | **Obrigatório**. O ID do Enfermeiro que você quer deletar |
 
 Response:
 
 - HTTP Status Code 204 (No Content) em caso de sucesso, sem necessidade de response body.
 
-- HTTP Status Code 404 (Not Found) 
- 
+- HTTP Status Code 404 (Not Found)
+
 Mensagem: "Não encontramos o cadastro do enfermeiro(a), verifique se foi informado corretamente"
 
-- HTTP Status Code 500 (Internal Serve Error) 
+- HTTP Status Code 500 (Internal Serve Error)
 
 Mensagem: "Não conseguimos processar sua solicitação"
 
-
---------------------------------------------
+---
 
 #### Realizar atendimento
 
@@ -605,14 +720,14 @@ Mensagem: "Não conseguimos processar sua solicitação"
 
 No corpo da request, informar objeto json com os campos de identificador do paciente e identificador do médico
 
-| Parâmetro   | Tipo       | Descrição                                   |
-| :---------- | :--------- | :------------------------------------------ |
-| `patientId`      | `INTEGER` | **Obrigatório**. O ID do Paciente que você quer atualizar|
-| `doctorId`      | `INTEGER` | **Obrigatório**. O ID do Médico que você quer atualizar|
+| Parâmetro   | Tipo      | Descrição                                                 |
+| :---------- | :-------- | :-------------------------------------------------------- |
+| `patientId` | `INTEGER` | **Obrigatório**. O ID do Paciente que você quer atualizar |
+| `doctorId`  | `INTEGER` | **Obrigatório**. O ID do Médico que você quer atualizar   |
 
-Response: 
+Response:
 
-- HTTP Status Code 200 (CREATED) 
+- HTTP Status Code 200 (CREATED)
 
 Retorna o objeto com os dados do médico e do paciente já atualizados.
 
@@ -621,12 +736,11 @@ Retorna o objeto com os dados do médico e do paciente já atualizados.
 Mensagem: "Os campos de identificador do paciente e do médico são obrigatórios para cadastrar o atendimento.".
 ou "Médico(a) não pode fazer atendimento, pois se encontra INATIVO(A)"
 
-- HTTP Status Code 404 (Not Found) 
+- HTTP Status Code 404 (Not Found)
 
-Mensagem: "Não encontramos o cadastro do paciente, verifique se foi informado corretamente" ou 
+Mensagem: "Não encontramos o cadastro do paciente, verifique se foi informado corretamente" ou
 "Não encontramos o cadastro do médico(a), verifique se foi informado corretamente"
 
-- HTTP Status Code 500 (Internal Serve Error) 
+- HTTP Status Code 500 (Internal Serve Error)
 
 Mensagem: "Não conseguimos processar sua solicitação"
-

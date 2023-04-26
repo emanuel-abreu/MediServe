@@ -20,4 +20,4 @@ app.use("", deleteRoutes);
 
 connection.sync({ alter: true });
 
-app.listen(6666, () => console.log("Servidor Online"));
+app.listen(3000, () => console.log("Servidor Online"));
