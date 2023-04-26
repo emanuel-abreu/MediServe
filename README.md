@@ -16,6 +16,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [Git](https://git-scm.com/)
 - [Sequelize ORM](https://sequelize.org/)
 - [dotenv](https://www.npmjs.com/package/dotenv)
+- [nodemon](https://www.npmjs.com/package/nodemon)
 
 ## Dependências
 
@@ -28,37 +29,35 @@ As seguintes dependências foram instaladas neste projeto:
 | pg-hstore | 2.3.4  |
 | sequelize | 6.31.0 |
 | dotenv    | 16.0.3 |
+| nodemon   | 2.0.22 |
 
 ## 🛠️ Instalação e Configuração
 
 Para executar esta API em sua máquina, siga os seguintes passos:
 
-1. Instale o Node.js em seu computador;
-2. Instale o PostgreSQL em sua máquina;
-3. Clone este repositório em seu computador;
-4. Navegue até a pasta do projeto através do terminal ou prompt de comando;
-5. Execute o comando npm install para instalar as dependências do projeto;
-6. Crie um arquivo .env na raiz do projeto, seguindo o exemplo abaixo e preencha com as informações do seu banco de dados:
+- 1. Instale o Node.js em seu computador;
+- 2. Instale o PostgreSQL em sua máquina;
+- 3. Clone este repositório em uma pasta que deseja, usando esse comando:
 
-| Variável          | Valor                      |
-| ----------------- | -------------------------- |
-| DIALECT_DATABASE  | postgres                   |
-| HOST_DATABASE     | localhost                  |
-| USER_DATABASE     | seu_usuario_do_postgres    |
-| PASSWORD_DATABASE | sua_senha_do_postgres      |
-| PORT_DATABASE     | porta_no_postgres          |
-| NAME_DATABASE     | nome_do_seu_banco_de_dados |
+| git clone https://github.com/emanuel-abreu/Projeto-Avaliativo-1.git |
 
-7. Execute o comando npx sequelize db:migrate para criar as tabelas do banco de dados;
-8. Execute o comando npm start para iniciar o servidor da API.
+- 4. Navegue até a pasta do projeto através do terminal ou prompt de comando;
+- 5. Execute o comando 'npm install' para instalar as dependências do projeto;
+- 6. Crie um banco de dados com o nome 'labmedicinedb' em uma conexão no Postgres;
+- 7. Use o arquivo '.env-exemple' que está na raiz do projeto, seguindo o exemplo abaixo e preencha com as informações do seu banco de dados:
 
-## Variáveis de Ambiente
+| Variável de Ambiente | Valor                      |
+| -------------------- | -------------------------- |
+| DIALECT_DATABASE     | postgres                   |
+| HOST_DATABASE        | localhost                  |
+| USER_DATABASE        | seu_usuario_do_postgres    |
+| PASSWORD_DATABASE    | sua_senha_do_postgres      |
+| PORT_DATABASE        | porta_no_postgres          |
+| NAME_DATABASE        | nome_do_seu_banco_de_dados |
 
-Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de ambiente no seu .env
+- 8. Execute o comando, na pasta raiz do projeto, 'npm start' para iniciar o servidor da API.
 
-`API_KEY`
-
-`ANOTHER_API_KEY`
+##
 
 ## 📌 Endpoints Disponíveis
 
@@ -578,15 +577,15 @@ No corpo da request, informar objeto json com os campos
   Exemplo de uso:
 ```
 
-{
-"name": "Emanuel de Abreu",
-"gender": "masculino",
-"date_of_bith": "10/10/2003",
-"cpf": "69323524333",
-"phone": "85998482147",
-"formation_institution": "UFC",
-"cofen_registration": "cofen-3254",
-}
+    {
+    	"name": "Emanuel de Abreu",
+    	"gender": "masculino",
+    	"date_of_bith": "10/10/2003",
+    	"cpf": "69323524333",
+    	"phone": "85998482147",
+    	"formation_institution": "UFC",
+    	"cofen_registration": "cofen-3254",
+    },
 
 Retorno:
 
@@ -662,7 +661,7 @@ Mensagem: "Não encontramos o cadastro do enfermeiro(a), verifique se foi inform
 
 Mensagem: "Não conseguimos processar sua solicitação"
 
-#### O sistema irá atualizar apenas os campos enviados via body no formado de JSON
+#### O sistema irá atualizar apenas os campos enviados via body no formado de JSON e se o id for enviado via Route params.
 
 ---
 
@@ -675,6 +674,7 @@ Mensagem: "Não conseguimos processar sua solicitação"
 Response:
 
 - HTTP Status Code 200 (OK)
+
   Retorna a lista de todos os enfermeiros cadastrados.
 
 - HTTP Status Code 500 (Internal Serve Error)
@@ -718,7 +718,9 @@ Mensagem: "Não conseguimos processar sua solicitação"
 
 Response:
 
-- HTTP Status Code 204 (No Content) em caso de sucesso, sem necessidade de response body.
+- HTTP Status Code 204 (No Content)
+
+Em caso de sucesso, deleta todos os dados do médico passado no Route params, sem necessidade de response.
 
 - HTTP Status Code 404 (Not Found)
 
@@ -730,7 +732,7 @@ Mensagem: "Não conseguimos processar sua solicitação"
 
 ---
 
-#### Realizar atendimento
+#### Realizar Atendimento
 
 ```http
   POST /api/services
