@@ -170,7 +170,7 @@ Retorna o objeto com os dados do paciente atualizados.
 
 - HTTP Status Code 400 (Bad Request)
 
-Caso não seja requerido atualizar, porém esteja vazio.
+Caso seja requerido atualizar, porém esteja vazio.
 
 Mensagem: "O campo 'Data de nascimento' é obrigatório e deve ser preenchido corretamente.(Ex: MM/DD/AAAA)" ou
 "O campo 'Contato de emergência' é obrigatório e deve ser preenchido corretamente."
@@ -200,7 +200,7 @@ No corpo da request, informar objeto json com os campos
 | `id`      | `INTEGER` | **Obrigatório**. O ID do Paciente que você quer atualizar                     |
 | `status`  | `ENUM`    | values: ["AGUARDANDO_ATENDIMENTO","EM_ATENDIMENTO","ATENDIDO","NAO_ATENDIDO"] |
 
-#### Atualiza Status de um paciente só serão aceitos as Strings descrita no status, caso seja enviado um status diferente o sistema irá retornar um erro.
+#### O sistema irá atualizar apenas se o status for enviado via body no formado de JSON e se o id for enviado via Route params.
 
 Response:
 
@@ -210,7 +210,7 @@ Retorna o objeto com os dados do paciente atualizados.
 
 - HTTP Status Code 400 (Bad Request)
 
-Caso não seja requerido atualizar, porém o status esteja incorreto.
+Caso seja requerido atualizar, porém o status esteja incorreto.
 
 Mensagem: "Status inválido, verifique se foi informado corretamente"
 
@@ -224,7 +224,9 @@ Mensagem: "Não conseguimos processar sua solicitação"
 
 ---
 
-#### Recebe todos os pacientes cadastrados na base, sendo possível filtrar via "query params".
+#### Listagem de Pacientes
+
+##### Recebe todos os pacientes cadastrados na base, sendo possível filtrar via "query params".
 
 Exemplo: /api/patients?status=ATENDIDO
 O sistema irá listar todos os pacientes que se encaixe no status passado via query params.
@@ -235,14 +237,15 @@ O sistema irá listar todos os pacientes que se encaixe no status passado via qu
 
 Response:
 
-- HTTP Status Code 200 (OK)
+- HTTP Status Code 200 (OK):
+
   Retorna a lista de todos os pacientes cadastrados.
 
 - HTTP Status Code 500 (Internal Serve Error)
 
 Mensagem: "Não conseguimos processar sua solicitação"
 
-ou
+**OU**
 
 ```http
   GET /api/patients?status=NAO_ATENDIDO
@@ -251,6 +254,7 @@ ou
 Response:
 
 - HTTP Status Code 200 (OK)
+
   Retorna a lista de todos os pacientes que estão com o status = NAO_ATENDIDO.
 
 - HTTP Status Code 500 (Internal Serve Error)
@@ -268,7 +272,8 @@ Mensagem: "Não conseguimos processar sua solicitação"
 Response:
 
 - HTTP Status Code 200 (OK)
-  Retorn os dados do paciente passado no params.
+
+  Retorna os dados do paciente passado no Route params.
 
 - HTTP Status Code 404 (Not Found)
 
@@ -292,7 +297,9 @@ Mensagem: "Não conseguimos processar sua solicitação"
 
 Response:
 
-- HTTP Status Code 204 (No Content) em caso de sucesso, sem necessidade de response body.
+- HTTP Status Code 204 (No Content)
+
+Em caso de sucesso, deleta todos os dados do paciente passo no Route params, sem necessidade de response body.
 
 - HTTP Status Code 404 (Not Found)
 
@@ -434,7 +441,7 @@ No corpo da request, informar objeto json com os campos
 | `id`      | `INTEGER` | **Obrigatório**. O ID do Médico que você quer atualizar |
 | `status`  | `ENUM`    | values: ['ATIVO','INATIVO'], defaultValue: 'ATIVO'      |
 
-#### Atualiza Status de um médico só serão aceitos as Strings descrita no status, caso seja enviado um status diferente o sistema irá retornar um erro.
+#### O sistema irá atualizar apenas se o status for enviado via body no formado de JSON e se o id for enviado via Route params.
 
 Response:
 
