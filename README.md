@@ -140,7 +140,7 @@ Mensagem: "Não conseguimos processar sua solicitação"
 
 ---
 
-#### Atualiza um Paciente
+#### Atualiza dados de um Paciente
 
 ```http
   PUT /api/patients/:{id}
@@ -183,11 +183,11 @@ Mensagem: "Não encontramos o cadastro do paciente, verifique se foi informado c
 
 Mensagem: "Não conseguimos processar sua solicitação"
 
-#### O sistema irá atualizar apenas os campos enviados via body no formado de JSON
+##### O sistema irá atualizar apenas os campos enviados via body no formado de JSON e se o id for enviado via Route params.
 
 ---
 
-#### Atualiza Status de um paciente
+#### Atualiza Status de um Paciente
 
 ```http
   PUT /api/patients/:{id}/status
@@ -199,8 +199,6 @@ No corpo da request, informar objeto json com os campos
 | :-------- | :-------- | :---------------------------------------------------------------------------- |
 | `id`      | `INTEGER` | **Obrigatório**. O ID do Paciente que você quer atualizar                     |
 | `status`  | `ENUM`    | values: ["AGUARDANDO_ATENDIMENTO","EM_ATENDIMENTO","ATENDIDO","NAO_ATENDIDO"] |
-
-#### O sistema irá atualizar apenas se o status for enviado via body no formado de JSON e se o id for enviado via Route params.
 
 Response:
 
@@ -221,6 +219,8 @@ Mensagem: "Não encontramos o cadastro do paciente, verifique se foi informado c
 - HTTP Status Code 500 (Internal Serve Error)
 
 Mensagem: "Não conseguimos processar sua solicitação"
+
+##### O sistema irá atualizar apenas se o status for enviado via body no formado de JSON e se o id for enviado via Route params.
 
 ---
 
@@ -299,7 +299,7 @@ Response:
 
 - HTTP Status Code 204 (No Content)
 
-Em caso de sucesso, deleta todos os dados do paciente passo no Route params, sem necessidade de response body.
+Em caso de sucesso, deleta todos os dados do paciente passado no Route params, sem necessidade de response.
 
 - HTTP Status Code 404 (Not Found)
 
@@ -308,6 +308,8 @@ Mensagem: "Não encontramos o cadastro do paciente, verifique se foi informado c
 - HTTP Status Code 500 (Internal Serve Error)
 
 Mensagem: "Não conseguimos processar sua solicitação"
+
+##### O sistema irá deletar apenas se o id for enviado via Route params.
 
 ---
 
@@ -384,7 +386,7 @@ Mensagem: "Não conseguimos processar sua solicitação"
 
 ---
 
-#### Atualiza um médico
+#### Atualiza dados de um Médico
 
 ```http
   PUT /api/doctors/:{id}
@@ -411,6 +413,8 @@ Retorna o objeto com os dados do médico atualizados.
 
 - HTTP Status Code 400 (Bad Request)
 
+Caso seja requerido atualizar, porém esteja vazio.
+
 Mensagem: "O campo 'Data de nascimento' é obrigatório e deve ser preenchido corretamente.(Ex: MM/DD/AAAA)"
 ou "O campo 'Instituição de formação' é obrigatório e deve ser preenchido corretamente."
 ou "O campo 'Registro CRM' é obrigatório e deve ser preenchido corretamente."
@@ -424,7 +428,7 @@ Mensagem: "Não encontramos o cadastro do médico, verifique se foi informado co
 
 Mensagem: "Não conseguimos processar sua solicitação"
 
-#### O sistema irá atualizar apenas os campos enviados via body no formado de JSON
+##### O sistema irá atualizar apenas os campos enviados via body no formado de JSON e se o id for enviado via Route params.
 
 ---
 
@@ -441,8 +445,6 @@ No corpo da request, informar objeto json com os campos
 | `id`      | `INTEGER` | **Obrigatório**. O ID do Médico que você quer atualizar |
 | `status`  | `ENUM`    | values: ['ATIVO','INATIVO'], defaultValue: 'ATIVO'      |
 
-#### O sistema irá atualizar apenas se o status for enviado via body no formado de JSON e se o id for enviado via Route params.
-
 Response:
 
 - HTTP Status Code 200 (OK)
@@ -451,7 +453,7 @@ Retorna o objeto com os dados do médico atualizados.
 
 - HTTP Status Code 400 (Bad Request)
 
-Caso não seja requerido atualizar, porém o status esteja incorreto.
+Caso seja requerido atualizar, porém o status esteja incorreto.
 
 Mensagem: "Status inválido, verifique se foi informado corretamente"
 
@@ -462,6 +464,8 @@ Mensagem: "Não encontramos o cadastro do médico, verifique se foi informado co
 - HTTP Status Code 500 (Internal Serve Error)
 
 Mensagem: "Não conseguimos processar sua solicitação"
+
+##### O sistema irá atualizar apenas se o status for enviado via body no formado de JSON e se o id for enviado via Route params.
 
 ---
 
@@ -479,13 +483,14 @@ O sistema irá listar todos os médicos que se encaixe no status passado via que
 Response:
 
 - HTTP Status Code 200 (OK)
+
   Retorna a lista de todos os médicos cadastrados.
 
 - HTTP Status Code 500 (Internal Serve Error)
 
 Mensagem: "Não conseguimos processar sua solicitação"
 
-ou
+**ou**
 
 ```http
   GET /api/doctors?status=INATIVO
@@ -494,6 +499,7 @@ ou
 Response:
 
 - HTTP Status Code 200 (OK)
+
   Retorna a lista de todos os médicos que estão com o status = INATIVO.
 
 - HTTP Status Code 500 (Internal Serve Error)
@@ -511,6 +517,7 @@ Mensagem: "Não conseguimos processar sua solicitação"
 Response:
 
 - HTTP Status Code 200 (OK)
+
   Retorna os dados do médico passado no Route params.
 
 - HTTP Status Code 404 (Not Found)
@@ -520,6 +527,8 @@ Mensagem: "Não encontramos o cadastro do médico, verifique se foi informado co
 - HTTP Status Code 500 (Internal Serve Error)
 
 Mensagem: "Não conseguimos processar sua solicitação"
+
+---
 
 #### Exclusão de médico
 
@@ -533,7 +542,9 @@ Mensagem: "Não conseguimos processar sua solicitação"
 
 Response:
 
-- HTTP Status Code 204 (No Content) em caso de sucesso, sem necessidade de response body.
+- HTTP Status Code 204 (No Content)
+
+Em caso de sucesso, deleta todos os dados do médico passado no Route params, sem necessidade de response.
 
 - HTTP Status Code 404 (Not Found)
 
@@ -565,32 +576,32 @@ No corpo da request, informar objeto json com os campos
 
 ```http
   Exemplo de uso:
- {
-		"name": "Emanuel de Abreu",
-		"gender": "masculino",
-		"date_of_bith": "10/10/2003",
-		"cpf": "69323524333",
-		"phone": "85998482147",
-		"formation_institution": "UFC",
-		"cofen_registration": "cofen-3254",
+```
+
+{
+"name": "Emanuel de Abreu",
+"gender": "masculino",
+"date_of_bith": "10/10/2003",
+"cpf": "69323524333",
+"phone": "85998482147",
+"formation_institution": "UFC",
+"cofen_registration": "cofen-3254",
 }
 
 Retorno:
 
-	{
-		"id": 5,
-		"name": "Emanuel de Abreu",
-		"gender": "masculino",
-		"date_of_bith": "2003-10-10",
-		"cpf": "69323524333",
-		"phone": "85998482147",
-		"formation_institution": "UFC",
-		"cofen_registration": "cofen-3254",
-		"createdAt": "2023-04-22T15:02:28.104Z",
-		"updatedAt": "2023-04-22T16:32:41.185Z"
-	},
-
-```
+    {
+    	"id": 5,
+    	"name": "Emanuel de Abreu",
+    	"gender": "masculino",
+    	"date_of_bith": "2003-10-10",
+    	"cpf": "69323524333",
+    	"phone": "85998482147",
+    	"formation_institution": "UFC",
+    	"cofen_registration": "cofen-3254",
+    	"createdAt": "2023-04-22T15:02:28.104Z",
+    	"updatedAt": "2023-04-22T16:32:41.185Z"
+    },
 
 Response:
 
