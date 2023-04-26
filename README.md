@@ -57,7 +57,19 @@ Para executar esta API em sua máquina, siga os seguintes passos:
 
 - 8. Execute o comando, na pasta raiz do projeto, 'npm start' para iniciar o servidor da API.
 
-##
+## Arquitetura do Projeto
+
+O projeto foi organizado em pastas para melhorar o entendimento do código, bem como ajudar em uma futura manuntenção na API, pois caso aconteça algum erro, será mais fácil corrigi-lo.
+
+A pasta [src] contém todo o código da aplicação, e é onde as principais funcionalidades estão implementadas. Dentro dela, temos as seguintes subpastas:
+
+- [controllers]: contém os controladores da aplicação, que recebem as requisições HTTP, processam as informações necessárias e retornam as respostas adequadas.
+
+- [database]: contém o arquivo necessário para configurar e estabelecer a conexão com o banco de dados PostgreSQL, como a definição do modelo de dados e a configuração do Sequelize.
+
+- [models]: contém os modelos da aplicação, que definem as tabelas e relacionamentos do banco de dados.
+
+- [routes]: contém as definições das rotas da aplicação, que mapeiam as requisições HTTP para as funções correspondentes nos controladores.
 
 ## 📌 Endpoints Disponíveis
 
