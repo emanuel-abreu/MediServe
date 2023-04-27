@@ -110,6 +110,9 @@ A pasta [src] contém todo o código da aplicação, e é onde as principais fun
 
     - `putRoutes.js`: Arquivo que exporta as rotas relacionadas nas atualizações.
 
+## Vídeo Explicativo do Projeto
+
+link: https://drive.google.com/file/d/1_-Xk0T2DnxWRxj6kgaDScuALi_PaG736/view?usp=share_link
 
 ## 📌 Endpoints Disponíveis
 
