@@ -39,7 +39,7 @@ Para executar esta API em sua máquina, siga os seguintes passos:
 - 2. Instale o PostgreSQL em sua máquina;
 - 3. Clone este repositório em uma pasta que deseja, usando esse comando:
 
-git clone https://github.com/emanuel-abreu/Projeto-Avaliativo-1.git
+git clone https://github.com/emanuel-abreu/MediServe.git
 
 - 4. Navegue até a pasta do projeto através do terminal ou prompt de comando;
 - 5. Execute o comando 'npm install' para instalar as dependências do projeto;
