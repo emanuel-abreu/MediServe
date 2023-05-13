@@ -4,17 +4,18 @@ async function deleteDoctor(req, res) {
   try {
     const registeredDoctor = await Doctor.findByPk(req.params.id);
 
-    await Doctor.destroy({
-      where: {
-        id: req.params.id,
-      },
-    });
     if (!registeredDoctor) {
       return res.status(404).json({
         message:
           "Não encontramos o cadastro do médico(a), verifique se foi informado corretamente",
       });
     }
+
+    await Doctor.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
 
     res.status(204).json({ message: "Excluído" });
   } catch (error) {

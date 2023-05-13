@@ -2,6 +2,8 @@ const Service = require("../../models/service");
 const Doctor = require("../../models/doctor");
 const Patient = require("../../models/patient");
 
+const updateStatusAfterService = require("../services/updateStatusAfterService");
+
 async function createService(req, res) {
   try {
     const { patientId, doctorId } = req.body;
@@ -52,18 +54,6 @@ async function createService(req, res) {
       .status(500)
       .json({ message: "Não conseguimos processar sua solicitação" });
   }
-}
-
-async function updateStatusAfterService(service) {
-  const patient = await Patient.findByPk(service.patientId);
-  const doctor = await Doctor.findByPk(service.doctorId);
-
-  patient.total_of_services += 1;
-  doctor.total_of_services += 1;
-
-  patient.status = "ATENDIDO";
-  await doctor.save();
-  await patient.save();
 }
 
 module.exports = createService;

@@ -39,7 +39,7 @@ Para executar esta API em sua máquina, siga os seguintes passos:
 - 2. Instale o PostgreSQL em sua máquina;
 - 3. Clone este repositório em uma pasta que deseja, usando esse comando:
 
-| git clone https://github.com/emanuel-abreu/Projeto-Avaliativo-1.git |
+git clone https://github.com/emanuel-abreu/Projeto-Avaliativo-1.git
 
 - 4. Navegue até a pasta do projeto através do terminal ou prompt de comando;
 - 5. Execute o comando 'npm install' para instalar as dependências do projeto;
@@ -71,7 +71,6 @@ A pasta [src] contém todo o código da aplicação, e é onde as principais fun
 
 - [routes]: contém as definições das rotas da aplicação, que mapeiam as requisições HTTP para as funções correspondentes nos controladores.
 
-
 - `index.js`: Arquivo principal do projeto que inicia o servidor.
 
 - `src/`: Pasta que contém o código-fonte da aplicação.
@@ -79,7 +78,7 @@ A pasta [src] contém todo o código da aplicação, e é onde as principais fun
   - `controllers/`: Pasta que contém os controladores da aplicação, que fazem o gerenciamento das requisições.
 
     - `doctors/`: Controladores que fazem o gerenciamento das requisições relacionados ao médico.
-    
+
     - `nurses/`: Controladores que fazem o gerenciamento das requisições relacionados ao enfermeiros.
 
     - `patients/`: Controladores que fazem o gerenciamento das requisições relacionados ao pacientes.
@@ -109,10 +108,6 @@ A pasta [src] contém todo o código da aplicação, e é onde as principais fun
     - `postRoutes.js`: Arquivo que exporta as rotas relacionadas nos cadastros.
 
     - `putRoutes.js`: Arquivo que exporta as rotas relacionadas nas atualizações.
-
-## Vídeo Explicativo do Projeto
-
-link: https://drive.google.com/file/d/1_-Xk0T2DnxWRxj6kgaDScuALi_PaG736/view?usp=share_link
 
 ## 📌 Endpoints Disponíveis
 

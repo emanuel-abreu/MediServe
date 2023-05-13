@@ -31,4 +31,4 @@ async function listAllNurses(req, res) {
   }
 }
 
-module.exports = { listNurse, listAllNurses };
+module.exports = listNurse;
