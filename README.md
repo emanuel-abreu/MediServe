@@ -108,6 +108,14 @@ A pasta [src] contém todo o código da aplicação, e é onde as principais fun
     - `postRoutes.js`: Arquivo que exporta as rotas relacionadas nos cadastros.
 
     - `putRoutes.js`: Arquivo que exporta as rotas relacionadas nas atualizações.
+ 
+
+## 🚀 Pontos a Melhorar
+
+- Documentar no swagger.
+- Criar o atendimento entre enfermeiro e paciente.
+- Usar a biblioteca YUP para as validações.
+- Implementar o Docker.
 
 ## 📌 Endpoints Disponíveis
 
